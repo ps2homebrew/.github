@@ -20,8 +20,9 @@ jobs:
 
     - name: Compile project
       run: |
-        make CDSUPPORT=1 NOT_PACKED=1
-
+        make
+        # commands for compiling your project
+        
     - name: Get short SHA
       id: slug
       run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
