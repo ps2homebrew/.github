@@ -23,21 +23,24 @@ jobs:
         make
         # commands for compiling your project
         
-    - name: Get short SHA
+    - name: Prepare artifacts
+        # zip *.elf
+        # create realease archive
+        
+    - name: Get short SHA and repository name
       id: slug
-      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
-
-    - name: Get repository name
-      id: repname
       run: |
-        echo ::set-output name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//")
-
+        echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+        echo "::set-output name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//")"
+  
     - name: Upload artifacts
       if: ${{ success() }}
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ steps.repname.outputs.REPOSITORY_NAME }}-${{ steps.slug.outputs.sha8 }}
-        path: './**/*.elf'
+        name: ${{ steps.slug.outputs.REPOSITORY_NAME }}-${{ steps.slug.outputs.sha8 }}
+        path: |
+          *.elf
+          *.ELF
     # 'path' will create artifact with all *.elf in working directory
     # you can change this
 
@@ -47,8 +50,11 @@ jobs:
       with:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         automatic_release_tag: "latest"
+        prerelease: true
         title: "Latest development build"
-        files: './**/*.elf'
+        files: |
+          *.elf
+          *.ELF
     # 'files' will create release with all *.elf in working directory
     # you can change this
  
