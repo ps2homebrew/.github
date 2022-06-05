@@ -1,12 +1,12 @@
-## How to contribute to Ps2homebrew
+# How to contribute to Ps2homebrew
 
-#### **Did you find a bug/issue?**
+## **Did you find a bug/issue?**
 
 * **Ensure the bug was not already reported** by searching on GitHub relevant project under Issues.
 
 * If you're unable to find an open issue addressing the problem, open a new one. Be sure to include a **title and clear description**, as much relevant information as possible.
 
-#### **Did you write a patch that fixes a bug?**
+## **Did you write a patch that fixes a bug?**
 
 * Open a new GitHub pull request with the patch.
 
@@ -16,7 +16,7 @@
 
 * Try to not change file formatting, identation, line endings, etc.
 
-#### **Do you intend to add a new feature or change an existing one?**
+## **Do you intend to add a new feature or change an existing one?**
 
 * **Ensure the feature was not already listed** by searching on GitHub relevant project under Issues and Projects. Check Readme for each project to get more information.
 

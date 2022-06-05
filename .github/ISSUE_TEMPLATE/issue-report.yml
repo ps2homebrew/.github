@@ -40,4 +40,3 @@ body:
       placeholder: SCPH-?????
     validations:
       required: true
-
